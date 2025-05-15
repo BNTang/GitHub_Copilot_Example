@@ -1,0 +1,16 @@
+<view class="container">
+  <canvas type="2d" id="glowCanvas" class="map-canvas" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd"></canvas>
+  
+  <!-- Loading indicator -->
+  <view class="loading-container" wx:if="{{isLoading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">地图加载中...</text>
+  </view>
+  
+  <view class="controls">
+    <view class="control-btn" bindtap="zoomIn">+</view>
+    <view class="control-btn" bindtap="zoomOut">-</view>
+  </view>
+  
+  <view class="back-btn" bindtap="goBack">返回</view>
+</view>

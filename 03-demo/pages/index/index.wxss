@@ -1,0 +1,24 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.map-button {
+  background-color: #0099FF;
+  color: white;
+  padding: 15rpx 30rpx;
+  border-radius: 8rpx;
+  font-size: 16px;
+}
