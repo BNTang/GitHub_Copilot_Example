@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国地图发光边界效果</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden;
+        }
+        
+        #map { 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            width: 100%; 
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 23, 51, 0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="map-overlay">中国地图发光边界效果演示</div>
+    
+    <script>
+        // 您需要替换为您的Mapbox访问令牌
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYm50YW5nIiwiYSI6ImNsaXR2ZnFxaDJhMjYzcG52ZGIzcHdldDYifQ.rL9nttXLtDaomq54_gkNWg';
+        
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: {
+                version: 8,
+                sources: {},
+                layers: [
+                    {
+                        id: 'background',
+                        type: 'background',
+                        paint: {
+                            'background-color': '#001733' // 深蓝色背景
+                        }
+                    }
+                ]
+            },
+            center: [104.5, 35.6], // 中国中心点坐标
+            zoom: 3,
+            minZoom: 2,
+            maxZoom: 10
+        });
+        
+        // 添加随机星点
+        function addStarPoints() {
+            const points = [];
+            for (let i = 0; i < 100; i++) {
+                // 生成中国范围内的随机点
+                const lng = 73 + Math.random() * 62; // 73-135 经度范围
+                const lat = 18 + Math.random() * 36; // 18-54 纬度范围
+                points.push({
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [lng, lat]
+                    },
+                    properties: {
+                        brightness: 0.3 + Math.random() * 0.7 // 随机亮度
+                    }
+                });
+            }
+            
+            map.addSource('stars', {
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: points
+                }
+            });
+            
+            map.addLayer({
+                id: 'stars-layer',
+                type: 'circle',
+                source: 'stars',
+                paint: {
+                    'circle-radius': ['get', 'brightness'],
+                    'circle-blur': 1,
+                    'circle-color': '#4db8ff',
+                    'circle-opacity': 0.8
+                }
+            });
+        }
+        
+        map.on('load', () => {
+            // 添加中国边界数据
+            // 使用更可靠的GeoJSON数据源
+            fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应不正常，状态码: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(chinaJson => {
+                    // 转换为GeoJSON格式
+                    const geojson = {
+                        type: 'FeatureCollection',
+                        features: [{
+                            type: 'Feature',
+                            geometry: {
+                                type: 'MultiPolygon',
+                                coordinates: []
+                            },
+                            properties: {}
+                        }]
+                    };
+                    
+                    // 简化处理，合并所有省份边界
+                    chinaJson.features.forEach(feature => {
+                        if (feature.geometry && feature.geometry.coordinates) {
+                            // 处理不同的几何类型
+                            if (feature.geometry.type === 'Polygon') {
+                                geojson.features[0].geometry.coordinates.push(feature.geometry.coordinates);
+                            } else if (feature.geometry.type === 'MultiPolygon') {
+                                geojson.features[0].geometry.coordinates = 
+                                    geojson.features[0].geometry.coordinates.concat(feature.geometry.coordinates);
+                            }
+                        }
+                    });
+                    
+                    // 添加地图数据源
+                    map.addSource('china-border', {
+                        type: 'geojson',
+                        data: geojson
+                    });
+                    
+                    // 添加外发光效果
+                    map.addLayer({
+                        id: 'border-glow-outer',
+                        type: 'line',
+                        source: 'china-border',
+                        layout: {
+                            'line-join': 'round',
+                            'line-cap': 'round'
+                        },
+                        paint: {
+                            'line-color': '#0099ff',
+                            'line-width': 3,
+                            'line-opacity': 0.4,
+                            'line-blur': 6
+                        }
+                    });
+                    
+                    // 添加中等发光效果
+                    map.addLayer({
+                        id: 'border-glow-medium',
+                        type: 'line',
+                        source: 'china-border',
+                        layout: {
+                            'line-join': 'round',
+                            'line-cap': 'round'
+                        },
+                        paint: {
+                            'line-color': '#0099ff',
+                            'line-width': 2,
+                            'line-opacity': 0.6,
+                            'line-blur': 3
+                        }
+                    });
+                    
+                    // 添加内发光效果
+                    map.addLayer({
+                        id: 'border-glow-inner',
+                        type: 'line',
+                        source: 'china-border',
+                        layout: {
+                            'line-join': 'round',
+                            'line-cap': 'round'
+                        },
+                        paint: {
+                            'line-color': '#4db8ff',
+                            'line-width': 1,
+                            'line-opacity': 1
+                        }
+                    });
+                    
+                    // 添加星点
+                    addStarPoints();
+                })
+                .catch(error => {
+                    console.error('加载中国地图数据失败:', error);
+                    alert('无法加载中国地图数据。请检查您的网络连接或尝试刷新页面。错误详情: ' + error.message);
+                    
+                    // 尝试添加星点，即使地图加载失败
+                    addStarPoints();
+                });
+        });
+        
+        // 添加交互效果
+        map.on('mousemove', 'border-glow-inner', (e) => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+        
+        map.on('mouseleave', 'border-glow-inner', () => {
+            map.getCanvas().style.cursor = '';
+        });
+    </script>
+</body>
+</html>
