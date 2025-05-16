@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/glowing-china-map/glowing-china-map"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#0099ff",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/glowing-china-map/glowing-china-map",
+        "iconPath": "static/images/map.png",
+        "selectedIconPath": "static/images/map-active.png",
+        "text": "地图"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

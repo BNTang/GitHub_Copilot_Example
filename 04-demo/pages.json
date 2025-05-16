@@ -1,0 +1,46 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/glowing-china-map/glowing-china-map",
+			"style": {
+				"navigationBarTitleText": "中国地图发光边界效果",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#0099ff",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/images/home.png",
+				"selectedIconPath": "static/images/home-active.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/glowing-china-map/glowing-china-map",
+				"iconPath": "static/images/map.png",
+				"selectedIconPath": "static/images/map-active.png",
+				"text": "地图"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}

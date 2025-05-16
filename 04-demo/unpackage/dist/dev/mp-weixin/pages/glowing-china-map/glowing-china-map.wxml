@@ -1,0 +1,1 @@
+<view class="container"><map id="map" class="map" latitude="{{a}}" longitude="{{b}}" scale="{{c}}" polyline="{{d}}" include-points="{{e}}" show-compass="false" enable-poi="false" enable-building="false" enable-3D="false" enable-traffic="false" bindupdated="{{f}}"></map></view>
