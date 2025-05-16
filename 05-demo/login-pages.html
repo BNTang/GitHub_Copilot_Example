@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            height: 100vh;
+        }
+        .glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+    </style>
+</head>
+<body class="p-6 flex items-center justify-center">
+    <div class="flex space-x-4 overflow-x-auto py-6 w-full justify-center">
+        <!-- 手机号-验证码登录页面 -->
+        <div class="mockup-phone flex-shrink-0">
+            <div class="phone-screen w-[375px] h-[812px] bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden relative">
+                <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2129&auto=format&fit=crop')"></div>
+                
+                <div class="flex flex-col items-center justify-center h-full px-8">
+                    <div class="mb-12 text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center shadow-xl">
+                            <img src="https://unpkg.com/lucide-static@latest/icons/fingerprint.svg" class="w-12 h-12 text-white" alt="Logo">
+                        </div>
+                        <h1 class="text-2xl font-bold text-gray-800">欢迎登录</h1>
+                        <p class="text-gray-500 mt-2 text-sm">请使用手机号码登录或注册账号</p>
+                    </div>
+                    
+                    <div class="w-full glass rounded-3xl p-6 shadow-lg">
+                        <div class="mb-5">
+                            <label class="text-sm font-medium text-gray-700 mb-1 block">手机号码</label>
+                            <div class="flex items-center border border-gray-300 rounded-xl focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 bg-white bg-opacity-80">
+                                <span class="pl-4 pr-2 text-gray-500">+86</span>
+                                <input type="tel" placeholder="请输入手机号码" class="w-full py-3 px-2 bg-transparent outline-none text-gray-800">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="text-sm font-medium text-gray-700 mb-1 block">验证码</label>
+                            <div class="flex items-center">
+                                <div class="flex-1 border border-gray-300 rounded-xl focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 bg-white bg-opacity-80">
+                                    <input type="text" placeholder="请输入验证码" class="w-full py-3 px-4 bg-transparent outline-none text-gray-800">
+                                </div>
+                                <button class="ml-3 px-4 py-3 bg-blue-100 text-blue-600 font-medium rounded-xl text-sm whitespace-nowrap">获取验证码</button>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3.5 rounded-xl font-medium shadow-md hover:shadow-lg transition-all mb-4 flex items-center justify-center">
+                            <img src="https://unpkg.com/lucide-static@latest/icons/log-in.svg" class="w-5 h-5 mr-2 text-white" alt="Login">
+                            登录 / 注册
+                        </button>
+                        
+                        <div class="flex items-center my-6">
+                            <div class="flex-1 h-px bg-gray-300"></div>
+                            <span class="px-4 text-sm text-gray-500">其他登录方式</span>
+                            <div class="flex-1 h-px bg-gray-300"></div>
+                        </div>
+                        
+                        <button class="w-full bg-[#07C160] text-white py-3.5 rounded-xl font-medium mb-6 flex items-center justify-center">
+                            <img src="https://unpkg.com/lucide-static@latest/icons/wechat.svg" class="w-5 h-5 mr-2 text-white" alt="WeChat">
+                            微信一键登录
+                        </button>
+                    </div>
+                    
+                    <p class="text-xs text-gray-500 mt-6 text-center">
+                        登录即表示您已阅读并同意
+                        <a href="#" class="text-blue-600">《用户协议》</a>和
+                        <a href="#" class="text-blue-600">《隐私政策》</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 微信登录页面 -->
+        <div class="mockup-phone flex-shrink-0">
+            <div class="phone-screen w-[375px] h-[812px] bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden relative">
+                <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2129&auto=format&fit=crop')"></div>
+                
+                <div class="flex flex-col items-center justify-center h-full px-8">
+                    <div class="mb-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center shadow-xl">
+                            <img src="https://unpkg.com/lucide-static@latest/icons/fingerprint.svg" class="w-12 h-12 text-white" alt="Logo">
+                        </div>
+                        <h1 class="text-2xl font-bold text-gray-800">微信授权登录</h1>
+                        <p class="text-gray-500 mt-2 text-sm">请在微信中确认授权</p>
+                    </div>
+                    
+                    <div class="w-full glass rounded-3xl p-6 shadow-lg flex flex-col items-center">
+                        <div class="w-32 h-32 rounded-full bg-[#07C160] flex items-center justify-center mb-6">
+                            <img src="https://unpkg.com/lucide-static@latest/icons/wechat.svg" class="w-16 h-16 text-white" alt="WeChat">
+                        </div>
+                        
+                        <div class="animate-pulse mb-6">
+                            <div class="flex justify-center space-x-2">
+                                <div class="w-3 h-3 bg-gray-400 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gray-400 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gray-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 text-center mb-8">正在等待微信授权确认...</p>
+                        
+                        <div class="w-full glass bg-white bg-opacity-50 rounded-2xl p-5 mb-6">
+                            <div class="flex items-start">
+                                <img src="https://unpkg.com/lucide-static@latest/icons/alert-circle.svg" class="w-6 h-6 text-amber-500 mr-3 flex-shrink-0" alt="Info">
+                                <p class="text-sm text-gray-600">
+                                    授权后，您的微信头像、昵称将用于完善账户信息
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full border border-gray-300 text-gray-700 py-3.5 rounded-xl font-medium hover:bg-gray-100 transition-all mt-2">
+                            取消授权
+                        </button>
+                    </div>
+                    
+                    <p class="text-xs text-gray-500 mt-6 text-center">
+                        授权即表示您已阅读并同意
+                        <a href="#" class="text-blue-600">《用户协议》</a>和
+                        <a href="#" class="text-blue-600">《隐私政策》</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 手机号绑定页面 -->
+        <div class="mockup-phone flex-shrink-0">
+            <div class="phone-screen w-[375px] h-[812px] bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden relative">
+                <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2129&auto=format&fit=crop')"></div>
+                
+                <div class="flex flex-col items-center justify-center h-full px-8">
+                    <div class="mb-8 text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-2xl overflow-hidden shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2574&auto=format&fit=crop" class="w-full h-full object-cover" alt="User Avatar">
+                        </div>
+                        <h1 class="text-2xl font-bold text-gray-800">绑定手机号</h1>
+                        <p class="text-gray-500 mt-2 text-sm">微信授权成功，请绑定手机号完成注册</p>
+                    </div>
+                    
+                    <div class="w-full glass rounded-3xl p-6 shadow-lg">
+                        <div class="flex items-center mb-6 glass bg-white bg-opacity-50 rounded-2xl p-3">
+                            <img src="https://unpkg.com/lucide-static@latest/icons/check-circle.svg" class="w-6 h-6 text-green-500 mr-3" alt="Success">
+                            <div>
+                                <p class="text-sm font-medium text-gray-700">微信授权成功</p>
+                                <p class="text-xs text-gray-500">微信昵称：小鱼儿</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <label class="text-sm font-medium text-gray-700 mb-1 block">手机号码</label>
+                            <div class="flex items-center border border-gray-300 rounded-xl focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 bg-white bg-opacity-80">
+                                <span class="pl-4 pr-2 text-gray-500">+86</span>
+                                <input type="tel" placeholder="请输入手机号码" class="w-full py-3 px-2 bg-transparent outline-none text-gray-800">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="text-sm font-medium text-gray-700 mb-1 block">验证码</label>
+                            <div class="flex items-center">
+                                <div class="flex-1 border border-gray-300 rounded-xl focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 bg-white bg-opacity-80">
+                                    <input type="text" placeholder="请输入验证码" class="w-full py-3 px-4 bg-transparent outline-none text-gray-800">
+                                </div>
+                                <button class="ml-3 px-4 py-3 bg-blue-100 text-blue-600 font-medium rounded-xl text-sm whitespace-nowrap">获取验证码</button>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3.5 rounded-xl font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center">
+                            <img src="https://unpkg.com/lucide-static@latest/icons/link.svg" class="w-5 h-5 mr-2 text-white" alt="Link">
+                            绑定并登录
+                        </button>
+                    </div>
+                    
+                    <p class="text-xs text-gray-500 mt-6 text-center">
+                        绑定手机号将同时作为您的登录账号使用
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -32,11 +32,11 @@ const _sfc_main = {
     onMapUpdated(e) {
       if (!this.mapLoaded) {
         this.mapLoaded = true;
-        common_vendor.index.__f__("log", "at pages/glowing-china-map/glowing-china-map.vue:51", "Map updated and ready");
+        common_vendor.index.__f__("log", "at pages/glowing-china-map/glowing-china-map.vue:56", "Map updated and ready");
       }
     },
     loadBoundaries() {
-      common_vendor.index.__f__("log", "at pages/glowing-china-map/glowing-china-map.vue:62", "Map set to display boundaries only");
+      common_vendor.index.__f__("log", "at pages/glowing-china-map/glowing-china-map.vue:67", "Map set to display boundaries only");
     }
   }
 };

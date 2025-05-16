@@ -7,11 +7,16 @@
 			:scale="scale"
 			:polyline="boundaries"
 			:include-points="includePoints"
-			show-compass="false"
-			enable-poi="false"
-			enable-building="false"
-			enable-3D="false"
-			enable-traffic="false"
+			:show-compass="false"
+			:enable-poi="false"
+			:enable-building="false"
+			:enable-3D="false"
+			:enable-overlooking="false"
+			:enable-rotate="false"
+			:rotate="0"
+			:skew="0"
+			:enable-satellite="false"
+			:enable-traffic="false"
 			@updated="onMapUpdated">
 		</map>
 	</view>
